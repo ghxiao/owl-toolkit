@@ -29,7 +29,7 @@
 		<jar destfile="dist/owl-tookit.jar">
 			<manifest>
 				<attribute name="Main-Class" value="OWLConverter" />
-				<attribute name="Class-Path" value=". lib/owl-tookit_lib/owlapi-api-3.4.3.jar owl-tookit_lib/owlapi-apibinding-3.4.3.jar owl-tookit_lib/owlapi-contract-3.4.3.jar owl-tookit_lib/owlapi-impl-3.4.3.jar owl-tookit_lib/owlapi-parsers-3.4.3.jar owl-tookit_lib/owlapi-tools-3.4.3.jar" />
+				<attribute name="Class-Path" value=". owl-tookit_lib/owlapi-api-3.4.3.jar owl-tookit_lib/owlapi-apibinding-3.4.3.jar owl-tookit_lib/owlapi-contract-3.4.3.jar owl-tookit_lib/owlapi-impl-3.4.3.jar owl-tookit_lib/owlapi-parsers-3.4.3.jar owl-tookit_lib/owlapi-tools-3.4.3.jar" />
 			</manifest>
 			<fileset dir="${build}"/>
 		</jar>
