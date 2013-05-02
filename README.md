@@ -7,6 +7,12 @@ de-facto owl-api library.
 Usage
 ----------
 
+* `owl-convert` converts the input OWL ontology to another format
+
+```console
+$ owl-convert {-rdfxml | -owlxml | -turtle } input.owl
+```
+
 * `owl-merge` merges several OWL files into a single one
 
 ```console
