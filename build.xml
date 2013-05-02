@@ -46,6 +46,10 @@
 		<exec executable="cp">
 		    <arg line="-pf sh/owl-merge dist/"/>
 		</exec>
+		<exec executable="cp">
+		    <arg line="-pf sh/owl-metrics dist/"/>
+		</exec>
+		
 		
 		
 	</target>
