@@ -1,5 +1,6 @@
 import java.io.File;
 
+import org.coode.owlapi.latex.LatexOntologyFormat;
 import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
@@ -37,6 +38,9 @@ public class OWLConverter {
 			break;
 		case "-turtle":
 			format = new TurtleOntologyFormat();
+			break;
+		case "-latex":
+			format = new LatexOntologyFormat();
 			break;
 		default:
 			throw new Exception("Unknown format: " + args[0]);

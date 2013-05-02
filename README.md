@@ -27,3 +27,8 @@ $ owl-merge [-iri <iri>] file1.owl ... filen.owl
 $ owl-metrics file.owl
 ```
 
+* `owl-pdf` converts the OWL file to a pdf file in DL format
+  
+```console
+$ owl-pdf file.owl
+```
