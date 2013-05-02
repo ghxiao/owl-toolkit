@@ -16,6 +16,7 @@
 		<tstamp />
 		<!-- Create the build directory structure used by compile -->
 		<mkdir dir="${build}" />
+		<mkdir dir="${dist}" />
 	</target>
 
 	<target name="compile" depends="init" description="compile the source ">
@@ -26,21 +27,27 @@
 	</target>
 
 	<target name="create_run_jar" depends="compile">
-		<jar destfile="dist/owl-tookit.jar">
+		<jar destfile="dist/owl-toolkit.jar">
 			<manifest>
 				<attribute name="Main-Class" value="OWLConverter" />
-				<attribute name="Class-Path" value=". owl-tookit_lib/owlapi-api-3.4.3.jar owl-tookit_lib/owlapi-apibinding-3.4.3.jar owl-tookit_lib/owlapi-contract-3.4.3.jar owl-tookit_lib/owlapi-impl-3.4.3.jar owl-tookit_lib/owlapi-parsers-3.4.3.jar owl-tookit_lib/owlapi-tools-3.4.3.jar" />
+				<attribute name="Class-Path" value=". lib/owlapi-api-3.4.3.jar lib/owlapi-apibinding-3.4.3.jar lib/owlapi-contract-3.4.3.jar lib/owlapi-impl-3.4.3.jar lib/owlapi-parsers-3.4.3.jar lib/owlapi-tools-3.4.3.jar" />
 			</manifest>
 			<fileset dir="${build}"/>
 		</jar>
-		<delete dir="dist/owl-tookit_lib" />
-		<mkdir dir="dist/owl-tookit_lib" />
-		<copy file="lib/owlapi-3.4.3/owlapi-api-3.4.3.jar" todir="dist/owl-tookit_lib" />
-		<copy file="lib/owlapi-3.4.3/owlapi-apibinding-3.4.3.jar" todir="dist/owl-tookit_lib" />
-		<copy file="lib/owlapi-3.4.3/owlapi-contract-3.4.3.jar" todir="dist/owl-tookit_lib" />
-		<copy file="lib/owlapi-3.4.3/owlapi-impl-3.4.3.jar" todir="dist/owl-tookit_lib" />
-		<copy file="lib/owlapi-3.4.3/owlapi-parsers-3.4.3.jar" todir="dist/owl-tookit_lib" />
-		<copy file="lib/owlapi-3.4.3/owlapi-tools-3.4.3.jar" todir="dist/owl-tookit_lib" />
+		<delete dir="dist/lib" />
+		<mkdir dir="dist/lib" />
+		<copy file="lib/owlapi-3.4.3/owlapi-api-3.4.3.jar" todir="dist/lib" />
+		<copy file="lib/owlapi-3.4.3/owlapi-apibinding-3.4.3.jar" todir="dist/lib" />
+		<copy file="lib/owlapi-3.4.3/owlapi-contract-3.4.3.jar" todir="dist/lib" />
+		<copy file="lib/owlapi-3.4.3/owlapi-impl-3.4.3.jar" todir="dist/lib" />
+		<copy file="lib/owlapi-3.4.3/owlapi-parsers-3.4.3.jar" todir="dist/lib" />
+		<copy file="lib/owlapi-3.4.3/owlapi-tools-3.4.3.jar" todir="dist/lib" />
+		
+		<exec executable="cp">
+		    <arg line="-pf sh/owl-merge dist/"/>
+		</exec>
+		
+		
 	</target>
 
 	<target name="clean" description="clean up">

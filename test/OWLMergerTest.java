@@ -11,9 +11,8 @@ public class OWLMergerTest {
 	@Test
 	public void test() throws OWLOntologyCreationException,
 			OWLOntologyStorageException, FileNotFoundException {
-		OWLMerger
-				.main("/Users/xiao/Downloads/ontology/lubmGenerator/lubm1/University0_0.owl",
-						"/Users/xiao/Downloads/ontology/lubmGenerator/lubm1/University0_1.owl");
+		OWLMerger.main("test/University0_0.owl", "test/University0_1.owl",
+				"test/univ-bench.owl");
 	}
 
 }

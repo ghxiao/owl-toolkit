@@ -19,10 +19,11 @@ public class OWLMerger {
 	 * @param args
 	 * @throws OWLOntologyCreationException
 	 * @throws OWLOntologyStorageException
-	 * @throws FileNotFoundException 
+	 * @throws FileNotFoundException
 	 */
 	public static void main(String... args)
-			throws OWLOntologyCreationException, OWLOntologyStorageException, FileNotFoundException {
+			throws OWLOntologyCreationException, OWLOntologyStorageException,
+			FileNotFoundException {
 		Set<OWLOntology> ontologies = new HashSet<OWLOntology>();
 
 		Set<OWLAxiom> axioms = new HashSet<>();
@@ -49,12 +50,8 @@ public class OWLMerger {
 
 		OWLOntology merged = manager.createOntology(axioms, iri);
 
-		// manager.saveOntology(merged, new RDFXMLOntologyFormat(), System.out);
+		manager.saveOntology(merged, new RDFXMLOntologyFormat(), System.out);
 
-		manager.saveOntology(merged, new RDFXMLOntologyFormat(),
-				new FileOutputStream(new File("./tmp.owl")));
-
-		// return ontologies;
 	}
 
 }
