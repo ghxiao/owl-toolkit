@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
@@ -29,6 +30,10 @@ public class OWLMetrics {
 		metrics.put("TBox Axioms", ontology.getTBoxAxioms(false).size());
 		metrics.put("RBox Axioms", ontology.getRBoxAxioms(false).size());
 		metrics.put("ABox Axioms", ontology.getABoxAxioms(false).size());
+		metrics.put("Concept Assertions", ontology.getAxioms(AxiomType.CLASS_ASSERTION).size());
+		metrics.put("Object Property Assertions", ontology.getAxioms(AxiomType.OBJECT_PROPERTY_ASSERTION).size());
+		metrics.put("Data Property Assertions", ontology.getAxioms(AxiomType.DATA_PROPERTY_ASSERTION).size());
+		
 		
 		for(Entry<String, Object> e: metrics.entrySet()){
 			System.out.println(String.format("%s: %s",  e.getKey(), e.getValue()));
