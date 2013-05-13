@@ -44,7 +44,7 @@
 		<copy file="lib/owlapi-3.4.3/owlapi-tools-3.4.3.jar" todir="dist/lib" />
 		
 		<exec executable="cp">
-		    <arg line="-pf sh/owl-pdf  sh/owl-convert sh/owl-merge sh/owl-metrics dist/"/>
+		    <arg line="-pf sh/owl-pdf  sh/owl-convert sh/owl-merge sh/owl-metrics sh/owl-profilize dist/"/>
 		</exec>
 	</target>
 

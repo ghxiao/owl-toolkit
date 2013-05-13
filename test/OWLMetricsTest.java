@@ -8,8 +8,9 @@ public class OWLMetricsTest {
 
 	@Test
 	public void test() throws OWLOntologyCreationException, IOException {
-		OWLMetrics.main("test/univ-bench.owl");
-		OWLMetrics.main("test/University0_0.owl");
+		//OWLMetrics.main("test/univ-bench.owl");
+		//OWLMetrics.main("test/University0_0.owl");
+		OWLMetrics.main("test/LUBM-ex-20.owl");
 	}
 
 }
