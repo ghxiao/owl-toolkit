@@ -32,3 +32,9 @@ $ owl-metrics file.owl
 ```console
 $ owl-pdf file.owl
 ```
+
+* `owl-profilize` cuts the OWL file to a profile (incl. RL, EL, QL) by dropping violated axioms
+
+```console
+$ owl-profilize {-rl | -el | -ql} file.owl
+```
