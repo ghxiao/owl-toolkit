@@ -22,6 +22,12 @@ $ owl-merge [-iri <iri>] file1.owl ... filen.owl
 * `owl-metrics` prints the metrics (e.g. number of
   concepts/propertes/ABox assertions
   ) of an OWL file
+
+* `owl-individuals` extract OWLIndividuals from an OWL file
+
+```console
+$ owl-individuals file.owl
+```
   
 ```console
 $ owl-metrics file.owl
