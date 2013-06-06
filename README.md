@@ -23,14 +23,14 @@ $ owl-merge [-iri <iri>] file1.owl ... filen.owl
   concepts/propertes/ABox assertions
   ) of an OWL file
 
+```console
+$ owl-metrics file.owl
+```
+
 * `owl-individuals` extract OWLIndividuals from an OWL file
 
 ```console
 $ owl-individuals file.owl
-```
-  
-```console
-$ owl-metrics file.owl
 ```
 
 * `owl-pdf` converts the OWL file to a pdf file in DL format
