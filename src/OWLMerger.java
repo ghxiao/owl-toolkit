@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +23,7 @@ public class OWLMerger {
 	public static void main(String... args)
 			throws OWLOntologyCreationException, OWLOntologyStorageException,
 			FileNotFoundException {
-		Set<OWLOntology> ontologies = new HashSet<OWLOntology>();
+		
 
 		Set<OWLAxiom> axioms = new HashSet<>();
 		IRI iri = null;

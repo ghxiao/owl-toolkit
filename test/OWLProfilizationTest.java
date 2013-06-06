@@ -1,5 +1,3 @@
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
