@@ -7,17 +7,23 @@ de-facto owl-api library.
 Usage
 ----------
 
+### owl-convert
+
 * `owl-convert` converts the input OWL ontology to another format
 
 ```console
 $ owl-convert {-rdfxml | -owlxml | -turtle } input.owl
 ```
 
+### owl-merge
+
 * `owl-merge` merges several OWL files into a single one
 
 ```console
 $ owl-merge [-iri <iri>] file1.owl ... filen.owl
 ```
+
+### owl-metrics
 
 * `owl-metrics` prints the metrics (e.g. number of
   concepts/propertes/ABox assertions
@@ -27,17 +33,23 @@ $ owl-merge [-iri <iri>] file1.owl ... filen.owl
 $ owl-metrics file.owl
 ```
 
+### owl-individuals
+
 * `owl-individuals` extract OWLIndividuals from an OWL file
 
 ```console
 $ owl-individuals file.owl
 ```
 
+### owl-pdf
+
 * `owl-pdf` converts the OWL file to a pdf file in DL format
   
 ```console
 $ owl-pdf file.owl
 ```
+
+### owl-profilize
 
 * `owl-profilize` cuts the OWL file to a profile (incl. RL, EL, QL) by dropping violated axioms
 
