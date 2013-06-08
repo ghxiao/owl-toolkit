@@ -23,8 +23,15 @@ public class OWLMetrics {
 	 * @throws OWLOntologyCreationException
 	 */
 	public static void main(String... args) throws OWLOntologyCreationException {
+		boolean verbose = false;
+		int i = 0;
+		if (args[0].equals("-v") || args[0].equals("-verbos")){
+			verbose = true;
+			i += 1;
+		}
+		
 		OWLOntology ontology = OWLManager.createOWLOntologyManager()
-				.loadOntologyFromOntologyDocument(new File(args[0]));
+				.loadOntologyFromOntologyDocument(new File(args[i]));
 		Map<String, Object> metrics = new LinkedHashMap<>();
 
 		metrics.put("Ontology", ontology.getOntologyID().getOntologyIRI());
@@ -59,7 +66,11 @@ public class OWLMetrics {
 
 		for (OWLProfile profile : profiles) {
 			OWLProfileReport report = profile.checkOntology(ontology);
-			metrics.put(profile.getName(), report.isInProfile());
+			if (!verbose){
+				metrics.put(profile.getName(), report.isInProfile());
+			}else{
+				metrics.put(profile.getName(), report.toString());
+			}
 		}
 
 		for (Entry<String, Object> e : metrics.entrySet()) {
