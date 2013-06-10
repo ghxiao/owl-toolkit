@@ -23,8 +23,8 @@ public class OWLMerger {
 	public static void main(String... args)
 			throws OWLOntologyCreationException, OWLOntologyStorageException,
 			FileNotFoundException {
+		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
 		
-
 		Set<OWLAxiom> axioms = new HashSet<>();
 		IRI iri = null;
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
