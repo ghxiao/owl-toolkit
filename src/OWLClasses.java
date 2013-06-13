@@ -1,11 +1,11 @@
 import java.io.File;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
-public class OWLIndividuals {
+public class OWLClasses {
 
 	/**
 	 * @param args
@@ -18,10 +18,11 @@ public class OWLIndividuals {
 		System.err.println("Ontology "
 				+ ontology.getOntologyID().getOntologyIRI());
 
-		for (OWLNamedIndividual ind : ontology.getIndividualsInSignature()) {
-			System.out.println(ind);
-		}
+		
 
+		for (OWLClass cls : ontology.getClassesInSignature()) {
+			System.out.println(cls);
+		}
 	}
 
 }
