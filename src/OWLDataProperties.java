@@ -1,7 +1,7 @@
 import java.io.File;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
@@ -18,8 +18,8 @@ public class OWLDataProperties {
 		System.err.println("Ontology "
 				+ ontology.getOntologyID().getOntologyIRI());
 
-		for (OWLObjectProperty property : ontology
-				.getObjectPropertiesInSignature()) {
+		for (OWLDataProperty property : ontology
+				.getDataPropertiesInSignature()) {
 			System.out.println(property);
 		}
 	}
