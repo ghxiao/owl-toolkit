@@ -4,6 +4,15 @@ owl-toolkit
 owl-toolkit is a set of command line tools for OWL files based on the
 de-facto owl-api library.
 
+Build
+---------
+1. `git clone https://github.com/ghxiao/owl-toolkit.git`
+2. `cd owl-toolkit`
+3. `ant`
+
+Then you will find the scripts and jars in the folder `dist`.
+
+
 Usage
 ----------
 
