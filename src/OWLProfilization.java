@@ -53,7 +53,9 @@ public class OWLProfilization {
 
 		for (OWLProfileViolation violation : report.getViolations()) {
 			OWLAxiom axiom = violation.getAxiom();
-			manager.removeAxiom(ontology, axiom);
+			if (axiom != null){
+				manager.removeAxiom(ontology, axiom);
+			}
 		}
 
 		manager.saveOntology(ontology, System.out);
