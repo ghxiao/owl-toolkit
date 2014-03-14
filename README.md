@@ -1,8 +1,7 @@
 owl-toolkit
 ===========
 
-owl-toolkit is a set of command line tools for OWL files based on the
-de-facto owl-api library.
+owl-toolkit is a set of command line tools for OWL files based on the owl-api library.
 
 Build
 ---------
@@ -34,9 +33,7 @@ $ owl-merge [-iri <iri>] file1.owl ... filen.owl
 
 ### owl-metrics
 
-* `owl-metrics` prints the metrics (e.g. number of
-  concepts/propertes/ABox assertions
-  ) of an OWL file
+* `owl-metrics` prints the metrics (e.g. number of concepts/propertes/ABox assertions) of an OWL file
 
 ```console
 $ owl-metrics [-v] file.owl
@@ -64,4 +61,12 @@ $ owl-pdf file.owl
 
 ```console
 $ owl-profilize {-rl | -el | -ql} file.owl
+```
+### owl-materialize-imports
+
+* `owl-materialize-imports` materializes the imports of the input ontology, that is, 
+it replaces the `import` declaration by the concrete axioms from the imported ontologies. 
+
+```console
+$ owl-materialize-imports file.owl 
 ```
