@@ -13,6 +13,11 @@ public class OWLDataProperties {
 	 * @throws OWLOntologyCreationException
 	 */
 	public static void main(String... args) throws OWLOntologyCreationException {
+		if (args.length != 1){
+			System.err.println("Usage: owl-dataproperties input.owl");
+			System.exit(0);
+		}
+		
 		OWLOntology ontology = OWLManager.createOWLOntologyManager()
 				.loadOntologyFromOntologyDocument(new File(args[0]));
 

@@ -25,6 +25,12 @@ public class OWLMetrics {
 	 */
 	public static void main(String... args) throws OWLOntologyCreationException {
 		boolean verbose = false;
+		
+		if (args.length == 0){
+			System.err.println("Usage: owl-metrics [-v] file.owl");
+			System.exit(0);
+		}
+		
 		int i = 0;
 		if (args[0].equals("-v") || args[0].equals("-verbos")){
 			verbose = true;

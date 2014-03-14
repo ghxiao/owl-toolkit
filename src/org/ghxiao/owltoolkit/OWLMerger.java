@@ -24,6 +24,11 @@ public class OWLMerger {
 	public static void main(String... args)
 			throws OWLOntologyCreationException, OWLOntologyStorageException,
 			FileNotFoundException {
+		if (args.length == 0){
+			System.err.println("Usage: owl-merge file1.owl ... filen.owl");
+			System.exit(0);
+		}
+		
 		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
 		
 		Set<OWLAxiom> axioms = new HashSet<>();

@@ -37,7 +37,7 @@ public class OWLImportsMaterialization {
 	}
 
 	private static void printUsage() {
-		System.err.println("Usage: \nowl-materialize-imports  file.owl");
+		System.err.println("Usage: owl-materialize-imports  file.owl");
 		
 	}
 }
