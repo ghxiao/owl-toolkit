@@ -15,4 +15,4 @@ else
 	java=java
 fi
 
-${java} -cp ${DIR}/owl-toolkit.jar OWLClasses "$@"
+${java} -cp ${DIR}/owl-toolkit.jar org.ghxiao.owltoolkit.OWLClasses "$@"

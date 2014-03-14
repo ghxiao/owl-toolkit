@@ -1,14 +1,16 @@
+package org.ghxiao.owltoolkit;
 import java.io.IOException;
 
+import org.ghxiao.owltoolkit.OWLIndividuals;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 
-public class OWLClassesTest {
+public class OWLIndividualsTest {
 
 	@Test
 	public void test() throws OWLOntologyCreationException, IOException {
-		OWLClasses.main("test/University0_0.owl");
+		OWLIndividuals.main("test/University0_0.owl");
 		
 	}
 

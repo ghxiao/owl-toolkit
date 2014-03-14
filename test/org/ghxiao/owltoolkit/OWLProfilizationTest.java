@@ -1,15 +1,16 @@
-import static org.junit.Assert.*;
-
+package org.ghxiao.owltoolkit;
+import org.ghxiao.owltoolkit.OWLProfilization;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 
-public class OWLImportsMaterializationTest {
+public class OWLProfilizationTest {
 
 	@Test
 	public void test() throws OWLOntologyCreationException, OWLOntologyStorageException {
-		OWLImportsMaterialization.main("test/University0_0.owl");
+		//OWLProfilization.main("-rl", "test/LUBM-ex-20.owl");
+		OWLProfilization.main("-rl", "test/univ-bench.owl");
 	}
 
 }

@@ -1,21 +1,13 @@
+package org.ghxiao.owltoolkit;
 import java.io.File;
 import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClassExpression;
-import org.semanticweb.owlapi.model.OWLEquivalentClassesAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.profiles.OWL2ELProfile;
-import org.semanticweb.owlapi.profiles.OWL2QLProfile;
-import org.semanticweb.owlapi.profiles.OWL2RLProfile;
-import org.semanticweb.owlapi.profiles.OWLProfile;
-import org.semanticweb.owlapi.profiles.OWLProfileReport;
-import org.semanticweb.owlapi.profiles.OWLProfileViolation;
-import org.semanticweb.owlapi.util.OWLAxiomVisitorAdapter;
 
 public class OWLImportsMaterialization {
 	public static void main(String... args)
@@ -26,8 +18,7 @@ public class OWLImportsMaterialization {
 		}
 		
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager
-				.loadOntologyFromOntologyDocument(new File(args[0]));
+		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new File(args[0]));
 
 		
 		Set<OWLOntology> importsClosure = ontology.getImportsClosure();

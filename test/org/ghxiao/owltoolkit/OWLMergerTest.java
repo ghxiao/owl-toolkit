@@ -1,5 +1,7 @@
+package org.ghxiao.owltoolkit;
 import java.io.FileNotFoundException;
 
+import org.ghxiao.owltoolkit.OWLMerger;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;

@@ -15,4 +15,4 @@ else
 	java=java
 fi
 
-${java} -cp ${DIR}/owl-toolkit.jar OWLConverter -latex "$@" | sed "s/#/\\\\#/g" | sed "s/</\$<\$/g" | sed "s/>/\$>\$/g" | pdflatex
+${java} -cp ${DIR}/owl-toolkit.jar org.ghxiao.owltoolkit.OWLConverter -latex "$@" | sed "s/#/\\\\#/g" | sed "s/</\$<\$/g" | sed "s/>/\$>\$/g" | pdflatex

@@ -1,3 +1,4 @@
+package org.ghxiao.owltoolkit;
 import java.io.File;
 
 import org.coode.owlapi.latex.LatexOntologyFormat;
