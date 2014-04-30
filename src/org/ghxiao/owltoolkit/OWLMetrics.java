@@ -63,6 +63,7 @@ public class OWLMetrics {
 				ontology.getAxioms(AxiomType.DATA_PROPERTY_ASSERTION).size());
 		metrics.put("Annotation Assertions",
 				ontology.getAxioms(AxiomType.ANNOTATION_ASSERTION).size());
+		metrics.put("SWRL Rules", ontology.getAxioms(AxiomType.SWRL_RULE).size());
 
 		List<OWLProfile> profiles = new ArrayList<>();
 
