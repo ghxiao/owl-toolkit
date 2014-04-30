@@ -42,6 +42,10 @@ public class OWLConverter {
 			format = new TurtleOntologyFormat();
 			break;
 		case "-fss":
+			// workaround	for java.lang.IllegalArgumentException: Comparison method violates its general contract!
+			//  at java.util.ComparableTimSort.mergeLo(ComparableTimSort.java:714)
+			System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
+
 			format = new OWLFunctionalSyntaxOntologyFormat();
 			break;	
 		case "-latex":
