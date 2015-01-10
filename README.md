@@ -11,7 +11,7 @@ Build from source
 ---------
 1. `git clone https://github.com/ghxiao/owl-toolkit.git`
 2. `cd owl-toolkit`
-3. `gradlew distZip`
+3. `./gradlew distZip`
 
 Then you will find the generated zip file in the folder `build/distributions`.
 
