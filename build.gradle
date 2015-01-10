@@ -23,3 +23,6 @@ jar {
     }
 }
 
+apply plugin: 'distribution'
+
+apply plugin: 'java-library-distribution'
