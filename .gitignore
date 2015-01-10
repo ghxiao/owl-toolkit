@@ -9,8 +9,11 @@ tmp.*
 .project
 .pydevproject
 bin
-
+out
 *.iml
 .idea
 dist
 build
+*.ipr
+*.iws
+.gradle

@@ -10,7 +10,7 @@ public class OWLClassesTest {
 
 	@Test
 	public void test() throws OWLOntologyCreationException, IOException {
-		OWLClasses.main("test/University0_0.owl");
+		OWLClasses.main("src/test/resources/University0_0.owl");
 		
 	}
 
