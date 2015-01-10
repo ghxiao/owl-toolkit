@@ -4,8 +4,10 @@ import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.google.common.base.Optional;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
+
+import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -32,7 +34,7 @@ public class OWLMerger {
 		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
 		
 		Set<OWLAxiom> axioms = new HashSet<>();
-		IRI iri = null;
+		Optional<IRI> iri = null;
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		for (String ontologyFile : args) {
 			try {
@@ -53,9 +55,9 @@ public class OWLMerger {
 		// OWLOntology merged = manager.createOntology(ontologies.iterator()
 		// .next().getOntologyID().getOntologyIRI());
 
-		OWLOntology merged = manager.createOntology(axioms, iri);
+		OWLOntology merged = manager.createOntology(axioms, iri.get());
 
-		manager.saveOntology(merged, new RDFXMLOntologyFormat(), System.out);
+		manager.saveOntology(merged, new RDFXMLDocumentFormat(), System.out);
 
 	}
 

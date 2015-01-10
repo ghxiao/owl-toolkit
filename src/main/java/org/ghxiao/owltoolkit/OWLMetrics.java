@@ -10,6 +10,7 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.profiles.OWL2DLProfile;
 import org.semanticweb.owlapi.profiles.OWL2ELProfile;
 import org.semanticweb.owlapi.profiles.OWL2QLProfile;
@@ -52,9 +53,9 @@ public class OWLMetrics {
 
 		metrics.put("Axioms", ontology.getAxiomCount());
 		metrics.put("Logical Axioms", ontology.getLogicalAxiomCount());
-		metrics.put("TBox Axioms", ontology.getTBoxAxioms(false).size());
-		metrics.put("RBox Axioms", ontology.getRBoxAxioms(false).size());
-		metrics.put("ABox Axioms", ontology.getABoxAxioms(false).size());
+		metrics.put("TBox Axioms", ontology.getTBoxAxioms(Imports.EXCLUDED).size());
+		metrics.put("RBox Axioms", ontology.getRBoxAxioms(Imports.EXCLUDED).size());
+		metrics.put("ABox Axioms", ontology.getABoxAxioms(Imports.EXCLUDED).size());
 		metrics.put("Concept Assertions",
 				ontology.getAxioms(AxiomType.CLASS_ASSERTION).size());
 		metrics.put("Object Property Assertions",

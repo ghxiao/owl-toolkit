@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
+
+import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -25,6 +26,7 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.model.parameters.Imports;
 
 public class OWLPredicateRemover {
 
@@ -83,7 +85,7 @@ public class OWLPredicateRemover {
 			}
 		}
 		
-		Set<OWLAxiom> aBoxAxioms = ontology.getABoxAxioms(false);
+		Set<OWLAxiom> aBoxAxioms = ontology.getABoxAxioms(Imports.EXCLUDED);
 		
 		List<OWLAxiom> axiomsToRemove = new ArrayList<>();
 		for(OWLAxiom ax : aBoxAxioms){
@@ -111,7 +113,7 @@ public class OWLPredicateRemover {
 		
 		manager.removeAxioms(ontology, new HashSet<OWLAxiom>( axiomsToRemove));
 		
-		manager.saveOntology(ontology, new RDFXMLOntologyFormat(), System.out);
+		manager.saveOntology(ontology, new RDFXMLDocumentFormat(), System.out);
 
 	}
 
