@@ -21,6 +21,7 @@ dependencies {
 }
 
 version = '1.2'
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'OWL Toolkit',
