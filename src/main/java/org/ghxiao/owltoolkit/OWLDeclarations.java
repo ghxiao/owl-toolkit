@@ -13,6 +13,8 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Set;
 
 public class OWLDeclarations {
@@ -21,10 +23,10 @@ public class OWLDeclarations {
 	 * @param args
 	 * @throws OWLOntologyCreationException
 	 */
-	public static void main(String... args) throws OWLOntologyCreationException, OWLOntologyStorageException {
+	public static void main(String... args) throws OWLOntologyCreationException, OWLOntologyStorageException, FileNotFoundException {
 		
-		if (args.length != 1){
-			System.err.println("Usage: owl-vocabulary input.owl");
+		if (args.length != 2){
+			System.err.println("Usage: owl-declarations input.owl output.owl");
 			System.exit(0);
 		}
 
@@ -43,7 +45,7 @@ public class OWLDeclarations {
 
         manager.addAxioms(newOntology, declarationAxioms);
 
-        manager.saveOntology(newOntology, new RDFXMLDocumentFormat(), System.out);
+        manager.saveOntology(newOntology, new RDFXMLDocumentFormat(), new FileOutputStream(new File(args[1])));
 
 
 

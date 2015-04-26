@@ -27,6 +27,16 @@ Usage
 $ owl-convert {-rdfxml | -owlxml | -turtle } input.owl
 ```
 
+### owl-declarations
+
+* `owl-declarations` extracts the OWL Declaration Axioms from the input ontology. 
+It is very useful when user wants to disable the ontology reasoning.
+
+```console
+$ owl-declarations  input.owl
+```
+
+
 ### owl-merge
 
 * `owl-merge` merges several OWL files into a single one
