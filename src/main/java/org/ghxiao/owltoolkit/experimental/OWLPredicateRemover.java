@@ -1,4 +1,4 @@
-package org.ghxiao.owltoolkit;
+package org.ghxiao.owltoolkit.experimental;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,12 +30,6 @@ import org.semanticweb.owlapi.model.parameters.Imports;
 
 public class OWLPredicateRemover {
 
-	/**
-	 * @param args
-	 * @throws OWLOntologyCreationException
-	 * @throws OWLOntologyStorageException
-	 * @throws FileNotFoundException
-	 */
 	public static void main(String... args)
 			throws OWLOntologyCreationException, OWLOntologyStorageException,
 			FileNotFoundException {
