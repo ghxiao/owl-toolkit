@@ -8,7 +8,7 @@
     </encoder>
   </appender>
 
-  <root level="debug">
-    <appender-ref ref="STDERR" />
+  <root level="WARN">
+    <appender-ref ref="STDOUT" />
   </root>
 </configuration>

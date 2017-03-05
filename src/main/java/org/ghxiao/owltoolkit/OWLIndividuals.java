@@ -21,12 +21,9 @@ public class OWLIndividuals {
 		OWLOntology ontology = OWLManager.createOWLOntologyManager()
 				.loadOntologyFromOntologyDocument(new File(args[0]));
 		
-		System.err.println("Ontology "
-				+ ontology.getOntologyID().getOntologyIRI());
+		System.err.println("Ontology " + ontology.getOntologyID().getOntologyIRI());
 
-		for (OWLNamedIndividual ind : ontology.getIndividualsInSignature()) {
-			System.out.println(ind);
-		}
+		ontology.individualsInSignature().forEach(System.out::println);
 
 	}
 

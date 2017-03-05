@@ -25,9 +25,8 @@ public class OWLObjectProperties {
 		System.err.println("Ontology "
 				+ ontology.getOntologyID().getOntologyIRI());
 
-		for (OWLObjectProperty property : ontology.getObjectPropertiesInSignature()) {
-			System.out.println(property);
-		}
+        ontology.objectPropertiesInSignature().forEach(System.out::println);
+
 	}
 
 }

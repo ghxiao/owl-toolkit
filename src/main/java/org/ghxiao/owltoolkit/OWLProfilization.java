@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLAxiomVisitor;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLEquivalentClassesAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -16,7 +17,7 @@ import org.semanticweb.owlapi.profiles.OWL2RLProfile;
 import org.semanticweb.owlapi.profiles.OWLProfile;
 import org.semanticweb.owlapi.profiles.OWLProfileReport;
 import org.semanticweb.owlapi.profiles.OWLProfileViolation;
-import org.semanticweb.owlapi.util.OWLAxiomVisitorAdapter;
+
 
 public class OWLProfilization {
 	public static void main(String... args)
@@ -68,7 +69,7 @@ public class OWLProfilization {
 	}
 }
 
-class OWLEquvilanceToSubsumptionsConverter extends OWLAxiomVisitorAdapter {
+class OWLEquvilanceToSubsumptionsConverter implements OWLAxiomVisitor {
 
 	OWLOntology ont;
 	private OWLOntologyManager manager;

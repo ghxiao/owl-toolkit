@@ -1,6 +1,8 @@
 package org.ghxiao.owltoolkit;
+
 import java.io.File;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -10,35 +12,31 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 public class OWLImportsMaterialization {
-	public static void main(String... args)
-			throws OWLOntologyCreationException, OWLOntologyStorageException {
-		if (args.length != 1){
-			printUsage();
-			System.exit(0);
-		}
-		
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new File(args[0]));
+    public static void main(String... args)
+            throws OWLOntologyCreationException, OWLOntologyStorageException {
+        if (args.length != 1) {
+            printUsage();
+            System.exit(0);
+        }
 
-		
-		Set<OWLOntology> importsClosure = ontology.getImportsClosure();
-		
-		OWLOntologyManager manager1 = OWLManager
-				.createOWLOntologyManager();
-		OWLOntology materializedOntology = manager1.createOntology(ontology.getOntologyID()) ;
-		
-		for(OWLOntology ont: importsClosure){
-			for(OWLAxiom ax : ont.getAxioms()){
-				manager1.addAxiom(materializedOntology, ax);
-			}
-		}
+        OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+        OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new File(args[0]));
 
-		manager.saveOntology(materializedOntology, System.out);
-	}
 
-	private static void printUsage() {
-		System.err.println("Usage: owl-materialize-imports  file.owl");
-		
-	}
+        OWLOntologyManager manager1 = OWLManager.createOWLOntologyManager();
+        OWLOntology materializedOntology = manager1.createOntology(ontology.getOntologyID());
+
+        ontology.importsClosure().forEach(
+                ont -> ont.axioms().forEach(
+                        ax -> manager1.addAxiom(materializedOntology, ax))
+        );
+
+        manager.saveOntology(materializedOntology, System.out);
+    }
+
+    private static void printUsage() {
+        System.err.println("Usage: owl-materialize-imports  file.owl");
+
+    }
 }
 

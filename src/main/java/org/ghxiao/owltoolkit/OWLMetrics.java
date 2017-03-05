@@ -1,10 +1,12 @@
 package org.ghxiao.owltoolkit;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Stream;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AxiomType;
@@ -20,72 +22,52 @@ import org.semanticweb.owlapi.profiles.OWLProfileReport;
 
 public class OWLMetrics {
 
-	/**
-	 * @param args
-	 * @throws OWLOntologyCreationException
-	 */
-	public static void main(String... args) throws OWLOntologyCreationException {
-		boolean verbose = false;
-		
-		if (args.length == 0){
-			System.err.println("Usage: owl-metrics [-v] file.owl");
-			System.exit(0);
-		}
-		
-		int i = 0;
-		if (args[0].equals("-v") || args[0].equals("-verbos")){
-			verbose = true;
-			i += 1;
-		}
-		
-		OWLOntology ontology = OWLManager.createOWLOntologyManager()
-				.loadOntologyFromOntologyDocument(new File(args[i]));
-		Map<String, Object> metrics = new LinkedHashMap<>();
+    public static void main(String... args) throws OWLOntologyCreationException {
 
-		metrics.put("Ontology", ontology.getOntologyID().getOntologyIRI());
 
-		metrics.put("Classes", ontology.getClassesInSignature().size());
-		metrics.put("Object Properties", ontology
-				.getObjectPropertiesInSignature().size());
-		metrics.put("Data Properties", ontology.getDataPropertiesInSignature()
-				.size());
-		metrics.put("Individuals", ontology.getIndividualsInSignature().size());
+        if (args.length == 0) {
+            System.err.println("Usage: owl-metrics [-v] file.owl");
+            System.exit(0);
+        }
 
-		metrics.put("Axioms", ontology.getAxiomCount());
-		metrics.put("Logical Axioms", ontology.getLogicalAxiomCount());
-		metrics.put("TBox Axioms", ontology.getTBoxAxioms(Imports.EXCLUDED).size());
-		metrics.put("RBox Axioms", ontology.getRBoxAxioms(Imports.EXCLUDED).size());
-		metrics.put("ABox Axioms", ontology.getABoxAxioms(Imports.EXCLUDED).size());
-		metrics.put("Concept Assertions",
-				ontology.getAxioms(AxiomType.CLASS_ASSERTION).size());
-		metrics.put("Object Property Assertions",
-				ontology.getAxioms(AxiomType.OBJECT_PROPERTY_ASSERTION).size());
-		metrics.put("Data Property Assertions",
-				ontology.getAxioms(AxiomType.DATA_PROPERTY_ASSERTION).size());
-		metrics.put("Annotation Assertions",
-				ontology.getAxioms(AxiomType.ANNOTATION_ASSERTION).size());
-		metrics.put("SWRL Rules", ontology.getAxioms(AxiomType.SWRL_RULE).size());
+        final boolean verbose = args[0].equals("-v") || args[0].equals("-verbose");
 
-		List<OWLProfile> profiles = new ArrayList<>();
+        int i = verbose ? 1 : 0;
 
-		profiles.add(new OWL2DLProfile());
-		profiles.add(new OWL2RLProfile());
-		profiles.add(new OWL2ELProfile());
-		profiles.add(new OWL2QLProfile());
+        OWLOntology ontology = OWLManager.createOWLOntologyManager().loadOntologyFromOntologyDocument(new File(args[i]));
+        Map<String, Object> metrics = new LinkedHashMap<>();
 
-		for (OWLProfile profile : profiles) {
-			OWLProfileReport report = profile.checkOntology(ontology);
-			if (!verbose){
-				metrics.put(profile.getName(), report.isInProfile());
-			}else{
-				metrics.put(profile.getName(), report.toString());
-			}
-		}
+        ontology.getOntologyID().getOntologyIRI().ifPresent(iri -> metrics.put("Ontology", iri));
 
-		for (Entry<String, Object> e : metrics.entrySet()) {
-			System.out.println(String.format("%s: %s", // 
-					e.getKey(), e.getValue()));
-		}
-	}
+        metrics.put("Classes", ontology.classesInSignature().count());
+        metrics.put("Object Properties", ontology.objectPropertiesInSignature().count());
+        metrics.put("Data Properties", ontology.dataPropertiesInSignature().count());
+        metrics.put("Individuals", ontology.individualsInSignature().count());
+
+        metrics.put("Axioms", ontology.getAxiomCount());
+        metrics.put("Logical Axioms", ontology.getLogicalAxiomCount());
+        metrics.put("TBox Axioms", ontology.tboxAxioms(Imports.EXCLUDED).count());
+        metrics.put("RBox Axioms", ontology.rboxAxioms(Imports.EXCLUDED).count());
+        metrics.put("ABox Axioms", ontology.aboxAxioms(Imports.EXCLUDED).count());
+        metrics.put("Concept Assertions", ontology.axioms(AxiomType.CLASS_ASSERTION).count());
+        metrics.put("Object Property Assertions", ontology.axioms(AxiomType.OBJECT_PROPERTY_ASSERTION).count());
+        metrics.put("Data Property Assertions", ontology.axioms(AxiomType.DATA_PROPERTY_ASSERTION).count());
+        metrics.put("Annotation Assertions", ontology.axioms(AxiomType.ANNOTATION_ASSERTION).count());
+        metrics.put("SWRL Rules", ontology.axioms(AxiomType.SWRL_RULE).count());
+
+        Stream.of(new OWL2DLProfile(), new OWL2RLProfile(), new OWL2ELProfile(), new OWL2QLProfile())
+                .forEach(profile -> {
+                            OWLProfileReport report = profile.checkOntology(ontology);
+                            if (!verbose) {
+                                metrics.put(profile.getName(), report.isInProfile());
+                            } else {
+                                metrics.put(profile.getName(), report.toString());
+                            }
+                        }
+                );
+
+        metrics.forEach((k, v) -> System.out.format("%s: %s\n", k, v));
+
+    }
 
 }
