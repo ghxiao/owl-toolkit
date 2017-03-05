@@ -2,11 +2,7 @@ package org.ghxiao.owltoolkit;
 import java.io.File;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.formats.FunctionalSyntaxDocumentFormat;
-import org.semanticweb.owlapi.formats.LatexDocumentFormat;
-import org.semanticweb.owlapi.formats.OWLXMLDocumentFormat;
-import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
-import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
+import org.semanticweb.owlapi.formats.*;
 import org.semanticweb.owlapi.model.OWLDocumentFormat;
 import org.semanticweb.owlapi.model.OWLOntology;
 
@@ -23,7 +19,7 @@ public class OWLConverter {
 	public static void main(String[] args) throws Exception {
 
 		if (args.length != 2){
-			System.err.println("Usage: OWLConverter {-rdfxml | -owlxml | -turtle | -fss | -latex } input.owl");
+			System.err.println("Usage: OWLConverter {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input.owl");
 			System.exit(0);
 		}
 		
@@ -41,6 +37,9 @@ public class OWLConverter {
 			break;
 		case "-turtle":
 			format = new TurtleDocumentFormat();
+			break;
+		case "-manchester":
+			format = new ManchesterSyntaxDocumentFormat();
 			break;
 		case "-fss":
 			// workaround	for java.lang.IllegalArgumentException: Comparison method violates its general contract!
