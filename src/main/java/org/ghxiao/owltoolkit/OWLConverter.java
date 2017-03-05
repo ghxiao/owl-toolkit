@@ -12,10 +12,6 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 public class OWLConverter {
 
-	/**
-	 * @param args
-	 * @throws Exception 
-	 */
 	public static void main(String[] args) throws Exception {
 
 		if (args.length != 2){

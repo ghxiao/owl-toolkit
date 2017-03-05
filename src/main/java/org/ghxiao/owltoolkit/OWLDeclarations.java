@@ -37,7 +37,7 @@ public class OWLDeclarations {
 
         Set<OWLDeclarationAxiom> declarationAxioms = ontology.axioms(AxiomType.DECLARATION).collect(toSet());
 
-        // it is important remove the ontology because creating the new one with the same IRI
+        // it is important remove the ontology before creating the new one with the same IRI
         manager.removeOntology(ontology);
 
         if (ontologyIRI.isPresent()) {

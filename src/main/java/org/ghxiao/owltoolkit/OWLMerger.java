@@ -18,12 +18,6 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 public class OWLMerger {
 
-    /**
-     * @param args
-     * @throws OWLOntologyCreationException
-     * @throws OWLOntologyStorageException
-     * @throws FileNotFoundException
-     */
     public static void main(String... args)
             throws OWLOntologyCreationException, OWLOntologyStorageException,
             FileNotFoundException {

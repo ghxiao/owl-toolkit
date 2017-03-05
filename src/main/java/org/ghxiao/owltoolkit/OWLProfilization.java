@@ -28,8 +28,7 @@ public class OWLProfilization {
 		}
 		
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		OWLOntology ontology = manager
-				.loadOntologyFromOntologyDocument(new File(args[1]));
+		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new File(args[1]));
 
 		OWLProfile profile;
 		switch (args[0]) {
@@ -43,7 +42,7 @@ public class OWLProfilization {
 			profile = new OWL2QLProfile();
 			break;
 		default:
-			throw new IllegalStateException("Unknow profile: " + args[0]);
+			throw new IllegalStateException("Unknown profile: " + args[0]);
 		}
 
 		ontology = new OWLEquvilanceToSubsumptionsConverter().convert(ontology,

@@ -8,10 +8,6 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 public class OWLObjectProperties {
 
-	/**
-	 * @param args
-	 * @throws OWLOntologyCreationException
-	 */
 	public static void main(String... args) throws OWLOntologyCreationException {
 		
 		if (args.length != 1){
@@ -22,8 +18,7 @@ public class OWLObjectProperties {
 		OWLOntology ontology = OWLManager.createOWLOntologyManager()
 				.loadOntologyFromOntologyDocument(new File(args[0]));
 
-		System.err.println("Ontology "
-				+ ontology.getOntologyID().getOntologyIRI());
+		System.err.println("Ontology " + ontology.getOntologyID().getOntologyIRI());
 
         ontology.objectPropertiesInSignature().forEach(System.out::println);
 

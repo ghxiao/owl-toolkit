@@ -8,10 +8,6 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 public class OWLIndividuals {
 
-	/**
-	 * @param args
-	 * @throws OWLOntologyCreationException
-	 */
 	public static void main(String... args) throws OWLOntologyCreationException {
 		if (args.length != 1){
 			System.err.println("Usage: owl-individuals input.owl");

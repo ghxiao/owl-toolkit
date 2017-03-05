@@ -24,7 +24,7 @@ Usage
 * `owl-convert` converts the input OWL ontology to another format
 
 ```console
-$ owl-convert {-rdfxml | -owlxml | -turtle | -manchester } input.owl
+$ owl-convert {-rdfxml | -owlxml | -turtle | -manchester} input.owl
 ```
 
 ### owl-declarations
@@ -33,7 +33,7 @@ $ owl-convert {-rdfxml | -owlxml | -turtle | -manchester } input.owl
 It is very useful when user wants to disable the ontology reasoning.
 
 ```console
-$ owl-declarations  input.owl
+$ owl-declarations input.owl
 ```
 
 

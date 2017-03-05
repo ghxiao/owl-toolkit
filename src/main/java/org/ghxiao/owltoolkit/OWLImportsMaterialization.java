@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.HasAxioms;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -26,17 +27,14 @@ public class OWLImportsMaterialization {
         OWLOntologyManager manager1 = OWLManager.createOWLOntologyManager();
         OWLOntology materializedOntology = manager1.createOntology(ontology.getOntologyID());
 
-        ontology.importsClosure().forEach(
-                ont -> ont.axioms().forEach(
-                        ax -> manager1.addAxiom(materializedOntology, ax))
-        );
+        final Stream<OWLAxiom> axioms = ontology.importsClosure().flatMap(HasAxioms::axioms);
+        manager1.addAxioms(materializedOntology, axioms);
 
-        manager.saveOntology(materializedOntology, System.out);
+        manager1.saveOntology(materializedOntology, System.out);
     }
 
     private static void printUsage() {
-        System.err.println("Usage: owl-materialize-imports  file.owl");
-
+        System.err.println("Usage: owl-materialize-imports file.owl");
     }
 }
 
