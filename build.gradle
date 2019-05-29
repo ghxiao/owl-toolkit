@@ -15,6 +15,10 @@ repositories {
 
 dependencies {
     compile group: 'net.sourceforge.owlapi', name: 'owlapi-distribution', version: '5.0.5'
+    compile('edu.stanford.protege:org.protege.xmlcatalog:1.0.5')
+//            {
+//        exclude('net.sourceforge.owlapi:owlapi-osgidistribution')
+//    }
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.+'
     testCompile group: 'junit', name: 'junit', version: '4.+'
